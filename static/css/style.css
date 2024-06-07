@@ -1,0 +1,241 @@
+/* HERO PARTY  */
+.carousel-img {
+    height: 300px; /* Ajustez cette hauteur selon vos besoins */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4%;
+
+  }
+.header-link{
+  color: rgba(255, 255, 255, 0.911);
+  
+}
+.j{
+  color: #3f3f69;
+}
+  .produit-button{
+    /* background-color: #3f3f69; */
+    height: 13%;
+    width: 27%;
+    border-color: #3f3f69 ;;
+    border-radius: 4%;
+    color: #3f3f69;;
+    font-weight: bold;
+  }
+  .produit-button:hover{
+         background-color: #3f3f69; 
+         transition: 1s;
+         color: white;
+
+  }
+  .background_image{
+      background-image: url(/assets/images/ariere_plan1.jpg);
+      /* opacity: 0.2; */
+      /* background-color: gray; */
+      background-size: cover;
+      height: 78vh;
+      opacity: 0.2;
+  }
+  .content-row{
+    /* padding-top: 10%; */
+    position: absolute;
+    top: 13rem;
+  }
+  
+/* END HERO PARTY */
+
+/* NAV BAR PARTY */
+.navbar-custom{
+  box-shadow: none;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+
+}
+
+.nav-link-home{
+  color:#6b95b7;
+  font-weight: bold;
+}
+.fa-search,.fa-user{
+  color: #6b95b7;
+}
+.navbar-custom , .nav-link{
+  color: #6b95b7;
+}
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-top: 1%;
+    padding-bottom: 3%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  }
+
+ 
+  .navbar {
+    background-color: #f8f9fa; /* Ensure navbar background color */
+  }
+
+  .carousel-category {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    max-width: 1000px;
+}
+.carousel-track-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel-card {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    margin: 0 10px;
+    padding: 20px;
+    text-align: center;
+}
+.carousel-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.carousel-button{
+  background-color: transparent;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  color: #007bff;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  position:relative;
+  left:10%;
+  top:17px;
+}
+/* END NAVBAR PARTY */
+
+/* PRODUCT DETAIL PARTY  */
+.product-title,.product-property{
+  color: #3f3f69;
+}
+    .product-image-detail{
+      height: 449px; /* Ajustez cette hauteur selon vos besoins */
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4%;
+      width: 100%;
+  
+    }
+    .badge{
+      background-color: #ffc107;
+    }
+    .produit-similair{
+      height: 250px; /* Ajustez cette hauteur selon vos besoins */
+    object-fit: cover;
+    object-position: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      padding: 0;
+      margin: 0;
+  }
+  
+  iframe {
+      width: 100%;
+      height: 70%;
+      border: none;
+  }
+    
+/* END PRODUCT DETAIL PARTY  */
+
+/* CONTACT PARTY  */
+#intro-example {
+  height: 210px;
+}
+.s{
+  color: red;
+}
+.form-control {
+  height: 50px; /* Ajustez la hauteur des champs de saisie ici */
+}
+textarea.form-control {
+  height: 150px; /* Ajustez la hauteur du textarea ici */
+}
+.container-contact{
+margin-bottom:10%;
+margin-top: 7%;
+}
+.btn-wide {
+width: 100%; /* Vous pouvez ajuster ce pourcentage selon vos besoins */
+}
+.map-contact{
+  height: 323px;
+  width: 100%;
+ border-radius: 2%;
+ box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.fa-phone-alt,.fa-envelope,.fa-map-marker-alt{
+  color: #7db7d6;
+}
+.contact-info{
+  color: #3f3f69;
+}
+/* END CONTACT PARTY  */
+
+/* FOOTER PARTY  */
+.footer{
+line-height: 35px;
+/* color: rgba(255, 255, 255, .5); */
+transition: 0.5s;
+/* color: var(--bs-secondary) !important; */
+/* background-color: hwb(180 2% 47%); */
+background-color: hwb(180 2% 83% / 0.877);
+
+}
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Cercle */
+  background-color: #333; /* Couleur de fond initiale du footer */
+  color: white; /* Couleur initiale des icônes */
+  margin: 10px;
+  transition: background-color 0.3s, color 0.3s; /* Transition douce */
+  text-decoration: none; /* Enlever le soulignement */
+}
+
+/* Appliquer le style de hover aux éléments descendants */
+.icon-circle:hover {
+  background-color: #007bff; /* Couleur de fond bleu */
+  color: white; /* Couleur du texte blanche */
+}
+
+.icon-circle:hover i {
+  color: white; /* Couleur de l'icône blanche */
+}
+
+.footer-icon a {
+  text-decoration: none;
+}
+.services li{
+  list-style: none;
+}
+
+/* END FOOTER PARTY  */

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel de Miniatures Infini</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .carousel-category {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            max-width: 1000px;
+        }
+        .carousel-track-container {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-card {
+            flex: 0 0 25%;
+            box-sizing: border-box;
+            margin: 0 10px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .carousel-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .carousel-button.left {
+            left: 10px;
+        }
+        .carousel-button.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<section class="carousel-category">
+    <div class="carousel">
+        <button class="carousel-button left">&lt;</button>
+        <div class="carousel-track-container">
+            <ul class="carousel-track">
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 1">
+                    <p>Carte 1</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 2">
+                    <p>Carte 2</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 3">
+                    <p>Carte 3</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 4">
+                    <p>Carte 4</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 5">
+                    <p>Carte 5</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 6">
+                    <p>Carte 6</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 7">
+                    <p>Carte 7</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="assets/images/ima1.jpg" alt="Image 8">
+                    <p>Carte 8</p>
+                </div>
+                <div>
+                
+                </div>
+            </ul>
+        </div>
+        <button class="carousel-button right">&gt;</button>
+    </div>
+</section>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const cards = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-button.right');
+        const prevButton = document.querySelector('.carousel-button.left');
+        const cardWidth = cards[0].getBoundingClientRect().width + 20; // Include margin
+        const visibleCards = 4; // Number of visible cards
+        let currentIndex = 0;
+
+        function moveToCard(index) {
+            const amountToMove = cardWidth * index;
+            track.style.transition = 'transform 0.5s ease-in-out';
+            track.style.transform = `translateX(-${amountToMove}px)`;
+        }
+
+        function autoSlide() {
+            currentIndex++;
+            if (currentIndex > cards.length - visibleCards) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    track.style.transform = 'translateX(0)';
+                    currentIndex = 0;
+                }, 500); // Match the duration of the transition
+            } else {
+                moveToCard(currentIndex);
+            }
+        }
+
+        nextButton.addEventListener('click', autoSlide);
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            moveToCard(currentIndex);
+        });
+
+        // Auto slide every 3 seconds
+        setInterval(autoSlide, 3000);
+    </script>
+</body>
+</html>
