@@ -18,6 +18,18 @@
 
   <title> {% block title %}{% endblock title %} </title>
 
+<style>
+  div.scroll-container {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+  
+  div.scroll-container img {
+    padding: 10px;
+  }
+</style>
 </head>
 
 <body>
@@ -40,6 +52,7 @@
   <script type="text/javascript" src={% static "js/mdb.umd.min.js" %}></script>
   <script type="text/javascript" src={% static "js/carousel-category.js" %}></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+
   <script type="text/javascript"></script>
   <script type="text/javascript" src={% static "js/style.js" %}></script>
 
