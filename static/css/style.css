@@ -1,29 +1,97 @@
+/*........................... RESPONSIVE PARTY  ......................................................*/
+/* HERO PARTY */
+
+
+
+/*............................ END RESPONSIVE PARTY .................................................... */
+
+/* CATEGORY SUB CATEGORY  */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #e2e6ea;
+  color: #000;
+  transition:0.4s;
+}
+
+.dropdown-menu .dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-submenu>.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-submenu .dropdown-item:hover,
+.dropdown-menu .dropdown-submenu .dropdown-item:focus {
+  background-color: #d1d5db;
+  color: #000;
+}
+/* END CATEGORY SUB CATEGORY  */
 /* HERO PARTY  */
+.hero-caroussel{
+  
+}
 .carousel-img {
     height: 300px; /* Ajustez cette hauteur selon vos besoins */
     object-fit: cover;
+    width: 400px;
     object-position: center;
     border-radius: 4%;
+    
 
   }
+
 .header-link{
   color: rgba(255, 255, 255, 0.911);
   
 }
-.j{
+.hero-title,.hero-title-title{
   color: #3f3f69;
+}
+.btn-search-bar{
+  position: absolute;
+  top: 0;
+   right: 25%;
+ background-color:#3f3f69;
+}
+.l{
+  padding: 30px;
+}
+.btn-search-bar:hover{
+  background-color:#3f3f69 ;
+  opacity: 0.5;
+  color: transparent;
+  transition: 1s;
 }
   .produit-button{
     /* background-color: #3f3f69; */
     height: 13%;
-    width: 27%;
+    width: 37%;
     border-color: #3f3f69 ;;
-    border-radius: 4%;
+    border-radius: 7%;
     color: #3f3f69;;
     font-weight: bold;
   }
   .produit-button:hover{
-         background-color: #3f3f69; 
+         background-color: #3f3f69;   
          transition: 1s;
          color: white;
 
@@ -38,9 +106,36 @@
   }
   .content-row{
     /* padding-top: 10%; */
-    position: absolute;
-    top: 13rem;
+    position: relative;
+    bottom: 27rem;
   }
+  .carousel-slide-title-product{
+    color:white;
+    font-weight: bold;
+    opacity: 0.5;
+    background-color: #3f3f69;
+    border-radius: 7%;
+    padding: 3%;
+  }
+  .carousel-caption{
+    margin-bottom: 20%;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px; /* Ajustez cette valeur selon vos besoins */
+    height: 20px; /* Ajustez cette valeur selon vos besoins */
+    background-size: 20px 30px; /* Assurez-vous que la taille de fond correspond à la taille des icônes */
+  }
+  .carousel-next,.carousel-prev {
+    background-color: #3f3f69;
+    color:transparent;
+  /* border: 2px solid #007bff; */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  }
+
   
 /* END HERO PARTY */
 
@@ -139,7 +234,7 @@
   
     }
     .badge{
-      background-color: #ffc107;
+      background-color: #3f3f69;
     }
     .produit-similair{
       height: 250px; /* Ajustez cette hauteur selon vos besoins */
@@ -286,3 +381,129 @@ background-color: hwb(180 2% 83% / 0.877);
 }
 
 /* END FOOTER PARTY  */
+/* ABOUT PARTY */
+
+  /* Mission Section */
+  .c-misucdas {
+    background-color: #444;
+    padding: 50px 0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.count-area-content {
+    background-color: #555;
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.count-area-content .icon-container {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #00aaff;
+}
+
+.count-digit {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.count-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.design-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.design-container .line {
+  width: 20px;
+  height: 2px;
+  background-color: #3f3f69;
+  margin: 0 10px;
+}
+
+.design-container .circle {
+  width: 20px;
+  height: 20px;
+  background-color: #3f3f69;
+  border-radius: 50%;
+}
+
+.animated-quote {
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px; /* Arrondir les coins */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère */
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 15px; /* Arrondir les coins */
+  object-fit: cover; /* S'assure que la vidéo couvre tout le conteneur */
+}
+
+@media (min-width: 768px) {
+  .video-container video {
+      height: 415px; /* Ajuster la hauteur sur les écrans moyens et plus grands */
+  }
+}
+
+/* Styling for social buttons container */
+.social-buttons-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px; /* space between buttons */
+    justify-content: center; /* center the buttons */
+    align-items: center;
+    margin-bottom: 20px;
+    overflow-x: auto; /* allows scrolling if content overflows */
+}
+
+/* Styling for individual social buttons */
+.social-buttons-container .btn {
+    flex: 1 1 auto; /* allow buttons to shrink and grow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px; /* ensure buttons don't shrink too much */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .social-buttons-container .btn {
+        font-size: 14px; /* reduce font size on small screens */
+        padding: 0.5rem 0.75rem; /* adjust padding for smaller screens */
+    }
+}
+
+
+/* END ABOUT PARTY  */

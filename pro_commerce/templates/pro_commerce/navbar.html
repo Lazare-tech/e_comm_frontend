@@ -1,35 +1,36 @@
-
 <!-- Upper Navbar -->
-<nav class="navbar navbar-expand-lg navbar-info mb-4" style='background-color:#3f3f69;color:white'>
+<nav class="navbar navbar-expand-lg navbar-info mb-4" style="background-color: #3f3f69; color: white;">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item header-link mx-2">
-            <i class="fas fa-phone-alt"></i> +226 002384293
-          </li>
-          <li class="nav-item header-link">
-            <i class="fas fa-envelope"></i> yelmaniyel@gmail.com
-          </li>
-        </ul>
-        <div class="d-flex align-items-center ms-auto">
-          <i class="fab fa-facebook fa-2x mx-2"></i>
-          <i class="fab fa-whatsapp fa-2x mx-2"></i>
-          <i class="fab fa-twitter fa-2x mx-2"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item header-link mx-2">
+                    <i class="fas fa-phone-alt"></i> +226 002384293
+                </li>
+                <li class="nav-item header-link">
+                    <i class="fas fa-envelope"></i> yelmaniyel@gmail.com
+                </li>
+            </ul>
+            <div class="d-flex align-items-center ms-auto">
+              <a href="#" class="icon-facebook"><i class="fab fa-facebook fa-2x mx-2 text-white"></i></a>
+              <a href="#" class="icon-whatsapp"><i class="fab fa-whatsapp fa-2x mx-2 text-white"></i></a>
+              <a href="#" class="icon-twiter"><i class="fab fa-twitter fa-2x mx-2 text-white"></i></a>
+            </div>
         </div>
-      </div>
     </div>
-  </nav>
-  
-   <!-- Main Navbar -->
-   <nav class="navbar bg-white  navbar-expand-lg navbar-light navbar-custom mt-0 mb-1" id="mainNavbar">
+</nav>
+
+<!-- Main Navbar -->
+<nav class="navbar bg-white navbar-expand-lg navbar-light navbar-custom mt-0 mb-1" id="mainNavbar">
     <div class="container">
         <a class="navbar-brand me-2" href="https://mdbgo.com/">
             <h6>CIRI-SARL</h6>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse ms-5" id="navbarButtonsExample">
@@ -37,21 +38,53 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-home" href="{% url 'pro_commerce:homepage' %}">Home</a>
                 </li>
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Category 1 heloo</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Category 2</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Subcategory 2.1</a></li>
+                                <li><a class="dropdown-item" href="#">Subcategory 2.2</a></li>
+                                <li><a class="dropdown-item" href="#">Subcategory 2.3</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Category 3</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Category 3</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Subcategory 3.1</a></li>
+                                <li><a class="dropdown-item" href="#">Subcategory 3.2</a></li>
+                                <li><a class="dropdown-item" href="#">Subcategory 3.3</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Category 4</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Produits</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Promotions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pro_commerce:apropos'%}">A Propos</a>
+                    <a class="nav-link" href="{% url 'pro_commerce:apropos' %}">A Propos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pro_commerce:contact' %}">Contact</a>
                 </li>
             </ul>
             <div class="d-flex align-items-center ms-auto">
+                <button class="btn btn-outline-info text-lowercase" type="button">Parcourez</button>
+
                 <a href="#" class="icon-search"><i class="fas fa-search fa-2x mx-2"></i></a>
-               <a href="#" ><i class="fas fa-user fa-2x mx-2"></i></a>
+                <a href="#"><i class="fas fa-user fa-2x mx-2"></i></a>
             </div>
         </div>
     </div>
 </nav>
-  

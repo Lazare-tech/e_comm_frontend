@@ -9,6 +9,8 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!--font aweson icon link-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet">
+
   <!--load static files-->
   {% load static %}
   <!--mdn Bootstrap links-->
@@ -19,16 +21,67 @@
   <title> {% block title %}{% endblock title %} </title>
 
 <style>
-  div.scroll-container {
-    background-color: #333;
-    overflow: auto;
-    white-space: nowrap;
-    padding: 10px;
+  * {
+    box-sizing: border-box;
   }
   
-  div.scroll-container img {
-    padding: 10px;
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
   }
+  
+  .flex-item-left {
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  .flex-item-right {
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of two-column layout */
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+  /* Card styling */
+  .card {
+      border-radius: 8px;
+      overflow: hidden;
+  }
+  
+  .card img {
+      object-fit: cover;
+  }
+  
+  .product-title {
+      margin-bottom: 20px;
+  }
+  
+  .produit-similair {
+      height: 200px;
+      object-fit: cover;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+      .order-md-1 {
+          order: 1;
+      }
+  
+      .order-md-2 {
+          order: 2;
+      }
+  
+      .order-md-3 {
+          order: 3;
+      }
+  }
+
 </style>
 </head>
 
@@ -58,7 +111,7 @@
 
 <script>
 
-</script>
+
 </body>
 
 </html>

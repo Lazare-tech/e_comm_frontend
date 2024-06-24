@@ -61,3 +61,21 @@ setInterval(autoSlide, 3000);
             map: map
         });
     }
+    
+    // CATEGORY SUB CATEGORY 
+    document.addEventListener('DOMContentLoaded', function () {
+        var dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
+  
+        dropdownSubmenus.forEach(function (dropdown) {
+            dropdown.addEventListener('mouseenter', function () {
+                var submenu = dropdown.querySelector('.dropdown-menu');
+                submenu.classList.add('show');
+            });
+  
+            dropdown.addEventListener('mouseleave', function () {
+                var submenu = dropdown.querySelector('.dropdown-menu');
+                submenu.classList.remove('show');
+            });
+        });
+    });
+    // END CATEGORY SUB CATEGORY

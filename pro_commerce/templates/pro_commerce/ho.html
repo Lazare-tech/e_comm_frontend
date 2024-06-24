@@ -1,0 +1,524 @@
+
+<h4 class="border-bottom container pt-5">Explorez les categories</h4>
+
+<!--CARROSEL CATEGORY-->
+<div class="container">
+  <button class="carousel-button left" id="carousel-button-left">&lt;</button>
+  <button class="carousel-button right" id="carousel-button-right">&gt;</button>
+</div>
+
+<section class="carousel-category pt-5">
+  <div class="carousel">
+    <div class="carousel-track-container">
+      <ul class="carousel-track">
+        <div class="col-lg-3">
+          <div class="card">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card ms-2">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+              class="card-img-top"
+              alt="Sunset Over the Sea"
+            />
+            <div class="card-body">
+              <h3 class="card-title fw-bold">Lorem</h3>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!--END CAROUSSEL CATEGORY-->
+<!--CARD PRODUCT-->
+
+<section class='container'>
+
+  <div class="row mb-5 justify-content-between">
+    <h4 class="mt-4 mb-5 text-center"><strong>Bestsellers</strong></h4>
+
+    <div class="col-4">
+        <div class="input-group search-bar ">
+            <input type="text" class="form-control py-4" placeholder="Rechercher un produit" aria-label="Rechercher">
+            <button class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+           
+        </div>
+    </div>
+    <div class="col-3">
+      <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+        <label for="fruits">Ville:</label>
+        <select id="ville" name="ville" class="border-0 form-select-sm bg-light me-3" form="villeform">
+            <option value="volvo">Bobo-Dioulasso</option>
+            <option value="saab">Ouagadougou</option>
+            <option value="opel">Banfora</option>
+            <option value="audi">Kaya</option>
+        </select>
+    </div>
+    </div>
+</div>
+      
+</section>
+<section>
+    <div class="container-fluid py-1 px-5">
+      <!-- Recherche et filtre -->
+       <!-- Products Section -->
+            {% comment %} <div class="col-lg-9 col-md-8"> {% endcomment %}
+                <div class="row" id="products-list">
+                    <!-- Product Card Example -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                      <div class="card h-100">
+                          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp" class="w-100" />
+                              <a href="#!">
+                                  <div class="hover-overlay">
+                                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="card-body d-flex flex-column">
+                              <a href="#" class="text-reset">
+                                  <h5 class="card-title mb-3">Product name</h5>
+                              </a>
+                              <div class="d-flex justify-content-between align-items-center mb-3">
+                                  <p class="card-text mb-0">Category</p>
+                                  <h6 class="mb-0">$61.99</h6>
+                              </div>
+                              <div class="d-flex justify-content-between align-items-center mt-auto">
+                                  <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                                  <div class="icon-group">
+                                      <i class="far fa-heart fa-1x mx-2"></i>
+                                      <i class="fas fa-share-alt fa-1x mx-2"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                    <div class="col-lg-3 col-md-6 mb-4">
+                      <div class="card h-100">
+                          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp" class="w-100" />
+                              <a href="#!">
+                                  <div class="hover-overlay">
+                                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="card-body">
+                              <a href="" class="text-reset">
+                                  <h5 class="card-title mb-3">Product name</h5>
+                              </a>
+                              <a href="" class="text-reset">
+                                  <p class="card-text">Category</p>
+                              </a>
+                              <h6 class="mb-3">$61.99</h6>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                                  <div class="icon-group">
+                                      <i class="far fa-heart fa-1x mx-2"></i>
+                                      <i class="fas fa-share-alt fa-1x mx-2"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                          <img
+                          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
+                          class="w-100"
+                        />                            
+                            <a href="#!">
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="text-reset">
+                                <h5 class="card-title mb-3">Product name</h5>
+                            </a>
+                            <a href="" class="text-reset">
+                                <p class="card-text">Category</p>
+                            </a>
+                            <h6 class="mb-3">$61.99</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                                <div class="icon-group">
+                                    <i class="far fa-heart fa-1x mx-2"></i>
+                                    <i class="fas fa-share-alt fa-1x mx-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card h-100">
+                      <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                        <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
+                        class="w-100"
+                      />
+                          <a href="#!">
+                              <div class="hover-overlay">
+                                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <a href="" class="text-reset">
+                              <h5 class="card-title mb-3">Product name</h5>
+                          </a>
+                          <a href="" class="text-reset">
+                              <p class="card-text">Category</p>
+                          </a>
+                          <h6 class="mb-3">$61.99</h6>
+                          <div class="d-flex justify-content-between align-items-center">
+                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                              <div class="icon-group">
+                                  <i class="far fa-heart fa-1x mx-2"></i>
+                                  <i class="fas fa-share-alt fa-1x mx-2"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                      <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
+                      class="w-100"
+                    />
+                        <a href="#!">
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset">
+                            <h5 class="card-title mb-3">Product name</h5>
+                        </a>
+                        <a href="" class="text-reset">
+                            <p class="card-text">Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                            <div class="icon-group">
+                                <i class="far fa-heart fa-1x mx-2"></i>
+                                <i class="fas fa-share-alt fa-1x mx-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                  <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                    <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
+                    class="w-100"
+                  />
+                      <a href="#!">
+                          <div class="hover-overlay">
+                              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="card-body">
+                      <a href="" class="text-reset">
+                          <h5 class="card-title mb-3">Product name</h5>
+                      </a>
+                      <a href="" class="text-reset">
+                          <p class="card-text">Category</p>
+                      </a>
+                      <h6 class="mb-3">$61.99</h6>
+                      <div class="d-flex justify-content-between align-items-center">
+                          <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
+                          <div class="icon-group">
+                              <i class="far fa-heart fa-1x mx-2"></i>
+                              <i class="fas fa-share-alt fa-1x mx-2"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              
+                    <!-- Repeat the above product card structure for other products -->
+                </div>
+            </div>
+        {% comment %} </div> {% endcomment %}
+    </div>
+</section>
+<h2 class="pb-2 border-bottom container c">Custom cards</h2>
+<!--LISTE QUELQUES CATEGORIES-->
+<section id="image-groups" class="py-5 bg-secondary">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="image-group bg-white p-3 mb-3">
+          <h2>Vêtements</h2>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/vetement/enfant_vetement.jpg"
+                    alt="Image 1"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>enfant</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/vetement/homme_v.jpg"
+                    alt="Image 3"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>homme</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/vetement/femme_vetement.jpg"
+                    alt="Image 2"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>femme</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/vetement/sport_vetement.jpg"
+                    alt="Image 4"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>sport</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="image-group bg-white p-3 mb-3">
+          <h2>Beautes</h2>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/coifure/coifure.jpg"
+                    alt="Image 5"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>coifure</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/coifure/maquillage.jpg"
+                    alt="Image 5"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>maquillage</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/coifure/parfum.jpg"
+                    alt="Image 7"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>parfum</h5>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="image-wrapper">
+                <a href="lien_vers_parfum">
+                  <img
+                    src="assets/images/coifure/soin_peau.jpg"
+                    alt="Image 8"
+                    class="img-fluid rounded img-category-gallery"
+                  />
+                </a>
+                <h5>soins peau</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="image-group bg-success p-3 mb-3">
+          <h2>Cuisines</h2>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <img
+                src="image9.jpg"
+                alt="Image 9"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 9</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image10.jpg"
+                alt="Image 10"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 10</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image11.jpg"
+                alt="Image 11"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 11</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image12.jpg"
+                alt="Image 12"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 12</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="image-group bg-warning p-3 mb-3">
+          <h2>Autre groupe</h2>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <img
+                src="image13.jpg"
+                alt="Image 13"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 13</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image14.jpg"
+                alt="Image 14"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 14</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image15.jpg"
+                alt="Image 15"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 15</h4>
+            </div>
+            <div class="col-6 mb-3">
+              <img
+                src="image16.jpg"
+                alt="Image 16"
+                class="img-fluid rounded img-category-gallery"
+              />
+              <h4>Titre 16</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
