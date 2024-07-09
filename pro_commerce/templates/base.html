@@ -21,33 +21,6 @@
   <title> {% block title %}{% endblock title %} </title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  .flex-container {
-    display: flex;
-    flex-direction: row;
-    font-size: 30px;
-    text-align: center;
-  }
-  
-  .flex-item-left {
-    padding: 10px;
-    flex: 50%;
-  }
-  
-  .flex-item-right {
-    padding: 10px;
-    flex: 50%;
-  }
-  
-  /* Responsive layout - makes a one column-layout instead of two-column layout */
-  @media (max-width: 800px) {
-    .flex-container {
-      flex-direction: column;
-    }
-  }
   /* Card styling */
   .card {
       border-radius: 8px;
@@ -87,7 +60,7 @@
 
 <body>
   <header>
-{% include 'pro_commerce/navbar.html' %}
+{% block nav %} {% endblock nav%}
   </header>
   <main>
 

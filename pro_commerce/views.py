@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import Category, Subcategory
 
 # Create your views here.
 def homepage(request):
-    return render(request,'pro_commerce/flex.html')
+    categories=Category.objects.all().prefetch_related('souscategories')
+
+    return render(request,'pro_commerce/home.html',{'categories': categories})
 #
 def detail(request):
     return render(request,'pro_commerce/detail.html')

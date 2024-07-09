@@ -38,6 +38,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "pro_commerce",
+    "compte",
+    'phonenumber_field',
+    'django_seed',
+    'widget_tweaks',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -134,3 +141,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'assets/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = 'compte.User'
+LOGIN_REDIRECT_URL= 'login'

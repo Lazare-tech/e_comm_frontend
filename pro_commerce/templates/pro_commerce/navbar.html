@@ -45,25 +45,21 @@
                         Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Category 1 heloo</a></li>
+                    {% for category in categories %}
+                        {% if category.souscategories.exists %}
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Category 2</a>
+                            <a class="dropdown-item dropdown-toggle" href="#">{{ category.nom }}</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Subcategory 2.1</a></li>
-                                <li><a class="dropdown-item" href="#">Subcategory 2.2</a></li>
-                                <li><a class="dropdown-item" href="#">Subcategory 2.3</a></li>
+                            {% for subcategory in category.souscategories.all %}
+                                <li><a class="dropdown-item" href="#">{{subcategory.nom }}</a></li>
+                                {% endfor %}
+                              
                             </ul>
                         </li>
-                        <li><a class="dropdown-item" href="#">Category 3</a></li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Category 3</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Subcategory 3.1</a></li>
-                                <li><a class="dropdown-item" href="#">Subcategory 3.2</a></li>
-                                <li><a class="dropdown-item" href="#">Subcategory 3.3</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Category 4</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="#">{{category.nom}} </a></li>
+                        {% endif %}
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -83,7 +79,7 @@
                 <button class="btn btn-outline-info text-lowercase" type="button">Parcourez</button>
 
                 <a href="#" class="icon-search"><i class="fas fa-search fa-2x mx-2"></i></a>
-                <a href="#"><i class="fas fa-user fa-2x mx-2"></i></a>
+                <a href="{% url '' %}"><i class="fas fa-user fa-2x mx-2"></i></a>
             </div>
         </div>
     </div>

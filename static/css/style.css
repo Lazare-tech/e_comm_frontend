@@ -1,7 +1,38 @@
 /*........................... RESPONSIVE PARTY  ......................................................*/
 /* HERO PARTY */
 
+.flex-container {
+  padding-top: 7rem;;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: center;
 
+}
+
+.flex-item-left {
+  padding: 10px;
+  flex: 50%;
+  margin-left: 7%;
+}
+
+.flex-item-right {
+  padding: 10px;
+  flex: 50%;
+  margin-left:8%;
+}
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .hero-title{
+    color:red;
+    text-align: center;
+  }
+ 
+}
 
 /*............................ END RESPONSIVE PARTY .................................................... */
 
@@ -97,18 +128,28 @@
 
   }
   .background_image{
-      background-image: url(/assets/images/ariere_plan1.jpg);
-      /* opacity: 0.2; */
-      /* background-color: gray; */
+      /* background-image: url(/assets/images/ariere_plan1.jpg);
+   
       background-size: cover;
       height: 78vh;
-      opacity: 0.2;
+      opacity: 0.2; */
+      
+      /* height: 100vh; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative; */
+        /* opacity: 0.4; */
+        height: 95vh;
+      background-color: rgba(0, 0, 0, 0);
+      background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: padding-box, padding-box;
+background-clip: border-box, border-box;
+background-image: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url("/assets/images/ariere_plan1.jpg");
   }
-  .content-row{
-    /* padding-top: 10%; */
-    position: relative;
-    bottom: 27rem;
-  }
+  
   .carousel-slide-title-product{
     color:white;
     font-weight: bold;
