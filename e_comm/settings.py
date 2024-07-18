@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_seed',
     'widget_tweaks',
+    'django_social_share'
 
 
 
@@ -73,6 +74,8 @@ TEMPLATES_DIR
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'pro_commerce.context_processors.categories_processor',
+
             ],
         },
     },
@@ -142,4 +145,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'assets/')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'compte.User'
-LOGIN_REDIRECT_URL= 'login'
+LOGIN_REDIRECT_URL= 'compte:login'

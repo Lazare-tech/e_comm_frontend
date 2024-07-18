@@ -3,121 +3,14 @@
 {% block title %}Page d'accueil{% endblock title %} 
 
 
-{% block nav %}
-
-<!-- Upper Navbar -->
-
-<nav class="navbar navbar-expand-lg navbar-info mb-4" style="background-color: #3f3f69; color: white;">
-  <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item header-link mx-2">
-                  <i class="fas fa-phone-alt"></i> +226 002384293
-              </li>
-              <li class="nav-item header-link">
-                  <i class="fas fa-envelope"></i> yelmaniyel@gmail.com
-              </li>
-          </ul>
-          <div class="d-flex align-items-center ms-auto">
-            <a href="#" class="icon-facebook"><i class="fab fa-facebook fa-2x mx-2 text-white"></i></a>
-            <a href="#" class="icon-whatsapp"><i class="fab fa-whatsapp fa-2x mx-2 text-white"></i></a>
-            <a href="#" class="icon-twiter"><i class="fab fa-twitter fa-2x mx-2 text-white"></i></a>
-          </div>
-      </div>
-  </div>
-</nav>
-
-<!-- Main Navbar -->
-<nav class="navbar bg-white navbar-expand-lg navbar-light navbar-custom mt-0 mb-1" id="mainNavbar">
-  <div class="container">
-      <a class="navbar-brand me-2" href="https://mdbgo.com/">
-          <h6>CIRI-SARL</h6>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtonsExample"
-          aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse ms-5" id="navbarButtonsExample">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 nav-menu">
-              <li class="nav-item">
-                  <a class="nav-link nav-link-home" href="{% url 'pro_commerce:homepage' %}">Home</a>
-              </li>
-              <!-- Navbar dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      Categories
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for category in categories %}
-                      {% if category.souscategories.exists %}
-                      <li class="dropdown-submenu">
-                          <a class="dropdown-item dropdown-toggle" href="#">{{ category.nom }}</a>
-                          <ul class="dropdown-menu">
-                          {% for subcategory in category.souscategories.all %}
-                              <li><a class="dropdown-item" href="#">{{subcategory.nom }}</a></li>
-                              {% endfor %}
-                            
-                          </ul>
-                      </li>
-                      {% else %}
-                      <li><a class="dropdown-item" href="#">{{category.nom}} </a></li>
-                      {% endif %}
-                      {% endfor %}
-                  </ul>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Produits</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Promotions</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'pro_commerce:apropos' %}">A Propos</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'pro_commerce:contact' %}">Contact</a>
-              </li>
-          </ul>
-          
-          <div class="d-flex align-items-center ms-auto">
-              <button class="btn btn-outline-info text-lowercase" type="button">Parcourez</button>
-
-              <a href="#" class="icon-search"><i class="fas fa-search fa-2x mx-2"></i></a>
-              <div class="dropdown d-inline-block">
-                {% if user.is_authenticated %}
-                    <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.username }}
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'compte:logout' %}">Déconnexion</a></li>
-                    </ul>
-                {% else %}
-                    <a href="{% url 'compte:login' %}" class="d-inline-block dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user fa-2x mx-2"></i>
-                    </a>
-                {% endif %}
-            </div>
-            
-                  
-      </div>
-  </div>
-</nav>
-
-{% endblock nav %}
-
-
-
 {% block content %}
 
 <!--navbar end-->
 <!-- Main Content -->
+
+<!--END CAROUSSEL CATEGORY-->
+<!--CARD PRODUCT-->
+
 <div class="container-fluid background_image">
   <div class="flex-container ">
     <div class="flex-item-left">
@@ -137,19 +30,19 @@
         </div>
         <div class="carousel-inner ms-2">
           <div class="carousel-item active">
-            <img src="assets/images/sacmainr.jpg" class="d-block w-100 carousel-img" alt="sac dame">
+            <img src="/assets/images/sacmainr.jpg" class="d-block w-100 carousel-img" alt="sac dame">
             <div class="carousel-caption d-none d-md-block">
               <h5><span class="carousel-slide-title-product">First slide label</span></h5>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/images/ima2.jpg" class="d-block w-100 carousel-img" alt="chaussure">
+            <img src="/assets/images/ima2.jpg" class="d-block w-100 carousel-img" alt="chaussure">
             <div class="carousel-caption d-none d-md-block">
               <h5><span class="carousel-slide-title-product">Second slide label</span></h5>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/images/ima2.jpg" class="d-block w-100 carousel-img" alt="chaussure">
+            <img src="/assets/images/ima2.jpg" class="d-block w-100 carousel-img" alt="chaussure">
             <div class="carousel-caption d-none d-md-block">
               <h5><span class="carousel-slide-title-product">Third slide label</span></h5>
             </div>
@@ -269,427 +162,81 @@
   </div>
 </section>
 
-<!--END CAROUSSEL CATEGORY-->
-<!--CARD PRODUCT-->
 
-<section class='container'>
 
-  <div class="row mb-5 justify-content-between">
-    <h4 class="mt-4 mb-5 text-center"><strong>Bestsellers</strong></h4>
+  <!-- Other Content Here -->
 
-    <div class="col-4">
-        <div class="input-group search-bar ">
-            <input type="text" class="form-control py-4" placeholder="Rechercher un produit" aria-label="Rechercher">
-            <button class="btn btn-primary" type="button">
-                <i class="fas fa-search"></i>
+  <!-- Main Content -->
+  
+    <!-- Other Content Here -->
+  
+    <section class='container'>
+      <div class="row mb-5 justify-content-between">
+        <h4 class="mt-4 mb-5 text-center"><strong>Bestsellers</strong></h4>
+  
+        <div class="col-4">
+          <form method="GET" action="{% url 'pro_commerce:homepage' %}" class="input-group search-bar">
+            <input type="text" name="search" class="form-control py-4" placeholder="Rechercher un produit" value="{{ search_query }}" aria-label="Rechercher">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-search text-white"></i>
             </button>
-           
+          {% comment %} </form> {% endcomment %}
         </div>
-    </div>
-    <div class="col-3">
-      <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-        <label for="fruits">Ville:</label>
-        <select id="ville" name="ville" class="border-0 form-select-sm bg-light me-3" form="villeform">
-            <option value="volvo">Bobo-Dioulasso</option>
-            <option value="saab">Ouagadougou</option>
-            <option value="opel">Banfora</option>
-            <option value="audi">Kaya</option>
-        </select>
-    </div>
-    </div>
-</div>
-      
-</section>
-<section>
-    <div class="container-fluid py-1 px-5">
-      <!-- Recherche et filtre -->
-       <!-- Products Section -->
-            {% comment %} <div class="col-lg-9 col-md-8"> {% endcomment %}
-                <div class="row" id="products-list">
-                    <!-- Product Card Example -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                      <div class="card h-100">
-                          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp" class="w-100" />
-                              <a href="#!">
-                                  <div class="hover-overlay">
-                                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                  </div>
-                              </a>
-                          </div>
-                          <div class="card-body d-flex flex-column">
-                              <a href="#" class="text-reset">
-                                  <h5 class="card-title mb-3">Product name</h5>
-                              </a>
-                              <div class="d-flex justify-content-between align-items-center mb-3">
-                                  <p class="card-text mb-0">Category</p>
-                                  <h6 class="mb-0">$61.99</h6>
-                              </div>
-                              <div class="d-flex justify-content-between align-items-center mt-auto">
-                                  <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                                  <div class="icon-group">
-                                      <i class="far fa-heart fa-1x mx-2"></i>
-                                      <i class="fas fa-share-alt fa-1x mx-2"></i>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+        <div class="col-3">
+          <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+            <label for="ville">Ville:</label>
+            {% comment %} <form method="GET" action="{% url 'pro_commerce:homepage' %}"> {% endcomment %}
+              <select id="ville" name="ville" class="border-0 form-select-sm bg-light me-3" onchange="this.form.submit()">
+                <option value="">Choisir une ville</option>
+                <option value="Bobo-Dioulasso" {% if city == "Bobo-Dioulasso" %}selected{% endif %}>Bobo-Dioulasso</option>
+                <option value="Ouagadougou" {% if city == "Ouagadougou" %}selected{% endif %}>Ouagadougou</option>
+                <option value="Banfora" {% if city == "Banfora" %}selected{% endif %}>Banfora</option>
+                <option value="Kaya" {% if city == "Kaya" %}selected{% endif %}>Kaya</option>
+              </select>
+              <!-- Include the search term as a hidden input to combine both filters -->
+              {% comment %} <input type="hidden" name="search" value="{{ search_query }}"> {% endcomment %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section>
+      <div class="container-fluid py-1 px-5">
+        <div class="row" id="products-list">
+          {% for product in products %}
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 product-card">
+              <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                <img src="{{ product.photo.url }}" class="w-100" alt="{{ product.nom }}" />
+                <a href="{% url 'pro_commerce:product_detail' product.id %}">
+                  <div class="hover-overlay">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                   </div>
-                  
-                    <div class="col-lg-3 col-md-6 mb-4">
-                      <div class="card h-100">
-                          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp" class="w-100" />
-                              <a href="#!">
-                                  <div class="hover-overlay">
-                                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                  </div>
-                              </a>
-                          </div>
-                          <div class="card-body">
-                              <a href="" class="text-reset">
-                                  <h5 class="card-title mb-3">Product name</h5>
-                              </a>
-                              <a href="" class="text-reset">
-                                  <p class="card-text">Category</p>
-                              </a>
-                              <h6 class="mb-3">$61.99</h6>
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                                  <div class="icon-group">
-                                      <i class="far fa-heart fa-1x mx-2"></i>
-                                      <i class="fas fa-share-alt fa-1x mx-2"></i>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                          <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
-                          class="w-100"
-                        />                            
-                            <a href="#!">
-                                <div class="hover-overlay">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="" class="text-reset">
-                                <h5 class="card-title mb-3">Product name</h5>
-                            </a>
-                            <a href="" class="text-reset">
-                                <p class="card-text">Category</p>
-                            </a>
-                            <h6 class="mb-3">$61.99</h6>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                                <div class="icon-group">
-                                    <i class="far fa-heart fa-1x mx-2"></i>
-                                    <i class="fas fa-share-alt fa-1x mx-2"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </a>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <a href="{% url 'pro_commerce:product_detail' product.id %}" class="text-reset text-decoration-none">
+                  <h6 class="card-title mb-3 text-muted">{{ product.nom }}</h6>
+                </a>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="card-text mb-0 text-muted">Prix</p>
+                  <h6 class="mb-0 text-muted">{{ product.prix }} FCFA</h6>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card h-100">
-                      <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                        <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
-                        class="w-100"
-                      />
-                          <a href="#!">
-                              <div class="hover-overlay">
-                                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="card-body">
-                          <a href="" class="text-reset">
-                              <h5 class="card-title mb-3">Product name</h5>
-                          </a>
-                          <a href="" class="text-reset">
-                              <p class="card-text">Category</p>
-                          </a>
-                          <h6 class="mb-3">$61.99</h6>
-                          <div class="d-flex justify-content-between align-items-center">
-                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                              <div class="icon-group">
-                                  <i class="far fa-heart fa-1x mx-2"></i>
-                                  <i class="fas fa-share-alt fa-1x mx-2"></i>
-                              </div>
-                          </div>
-                      </div>
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <a href="{% url 'pro_commerce:product_detail' product.id %}" class="btn border border-secondary rounded-pill px-3 text-primary">Voir plus</a>
+                  <div class="icon-group">
+                    <i class="far fa-heart fa-1x mx-2"></i>
+                    {% comment %} <i class="fas fa-share-alt fa-1x mx-2"></i> {% endcomment %}
                   </div>
-              </div>
-              <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                      <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
-                      class="w-100"
-                    />
-                        <a href="#!">
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p class="card-text">Category</p>
-                        </a>
-                        <h6 class="mb-3">$61.99</h6>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                            <div class="icon-group">
-                                <i class="far fa-heart fa-1x mx-2"></i>
-                                <i class="fas fa-share-alt fa-1x mx-2"></i>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card h-100">
-                  <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                    <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
-                    class="w-100"
-                  />
-                      <a href="#!">
-                          <div class="hover-overlay">
-                              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                          </div>
-                      </a>
-                  </div>
-                  <div class="card-body">
-                      <a href="" class="text-reset">
-                          <h5 class="card-title mb-3">Product name</h5>
-                      </a>
-                      <a href="" class="text-reset">
-                          <p class="card-text">Category</p>
-                      </a>
-                      <h6 class="mb-3">$61.99</h6>
-                      <div class="d-flex justify-content-between align-items-center">
-                          <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">show details</a>
-                          <div class="icon-group">
-                              <i class="far fa-heart fa-1x mx-2"></i>
-                              <i class="fas fa-share-alt fa-1x mx-2"></i>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-              
-                    <!-- Repeat the above product card structure for other products -->
-                </div>
-            </div>
-        {% comment %} </div> {% endcomment %}
-    </div>
-</section>
-<h2 class="pb-2 border-bottom container c">Custom cards</h2>
-<!--LISTE QUELQUES CATEGORIES-->
-<section id="image-groups" class="py-5 bg-secondary">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="image-group bg-white p-3 mb-3">
-          <h2>Vêtements</h2>
-          <div class="row">
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/vetement/enfant_vetement.jpg"
-                    alt="Image 1"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>enfant</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/vetement/homme_v.jpg"
-                    alt="Image 3"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>homme</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/vetement/femme_vetement.jpg"
-                    alt="Image 2"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>femme</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/vetement/sport_vetement.jpg"
-                    alt="Image 4"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>sport</h5>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="image-group bg-white p-3 mb-3">
-          <h2>Beautes</h2>
-          <div class="row">
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/coifure/coifure.jpg"
-                    alt="Image 5"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>coifure</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/coifure/maquillage.jpg"
-                    alt="Image 5"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>maquillage</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/coifure/parfum.jpg"
-                    alt="Image 7"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>parfum</h5>
-              </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="image-wrapper">
-                <a href="lien_vers_parfum">
-                  <img
-                    src="assets/images/coifure/soin_peau.jpg"
-                    alt="Image 8"
-                    class="img-fluid rounded img-category-gallery"
-                  />
-                </a>
-                <h5>soins peau</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="image-group bg-success p-3 mb-3">
-          <h2>Cuisines</h2>
-          <div class="row">
-            <div class="col-6 mb-3">
-              <img
-                src="image9.jpg"
-                alt="Image 9"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 9</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image10.jpg"
-                alt="Image 10"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 10</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image11.jpg"
-                alt="Image 11"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 11</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image12.jpg"
-                alt="Image 12"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 12</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="image-group bg-warning p-3 mb-3">
-          <h2>Autre groupe</h2>
-          <div class="row">
-            <div class="col-6 mb-3">
-              <img
-                src="image13.jpg"
-                alt="Image 13"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 13</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image14.jpg"
-                alt="Image 14"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 14</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image15.jpg"
-                alt="Image 15"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 15</h4>
-            </div>
-            <div class="col-6 mb-3">
-              <img
-                src="image16.jpg"
-                alt="Image 16"
-                class="img-fluid rounded img-category-gallery"
-              />
-              <h4>Titre 16</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
+  
+  
 {% endblock content %}

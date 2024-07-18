@@ -7,13 +7,13 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User,UserAdmin)
 #
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'prix', 'stock', 'categorie', 'sous_categorie', 'utilisateur')
+    list_display = ('nom', 'prix', 'stock', 'ville','categorie', 'sous_categorie', 'utilisateur')
     list_filter = ('categorie', 'utilisateur')
     search_fields = ('nom', 'description')
 
     fieldsets = (
         ('Informations générales', {
-            'fields': ('nom', 'description', 'photo')
+            'fields': ('nom', 'description', 'photo','ville')
         }),
         ('Détails du produit', {
             'fields': ('prix', 'stock', 'categorie', 'sous_categorie', 'utilisateur')
@@ -24,7 +24,7 @@ admin.site.register(Product, ProductAdmin)
 
 #
 class AdresseAdmin(admin.ModelAdmin):
-    list_display=('ville','quartier','repere','contact','utilisateur')
+    list_display=('ville','quartier','repere','contact','utilisateur','produit')
 admin.site.register(Adresse,AdresseAdmin)
 #
 
@@ -33,7 +33,7 @@ class SubcategoryInline(admin.TabularInline):  # Vous pouvez utiliser StackedInl
     extra = 1
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('nom',)
+    list_display = ('nom','slug')
     search_fields = ('nom',)
     inlines = [SubcategoryInline]
 
