@@ -201,6 +201,8 @@
       </div>
     </section>
   
+ 
+    
     <section>
       <div class="container-fluid py-1 px-5">
         <div class="row" id="products-list">
@@ -224,10 +226,10 @@
                   <h6 class="mb-0 text-muted">{{ product.prix }} FCFA</h6>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
-                  <a href="{% url 'pro_commerce:product_detail' product.id %}" class="btn border border-secondary rounded-pill px-3 text-primary">Voir plus</a>
+                  <a href="{% url 'pro_commerce:product_detail' product.id %}" class="rounded-pill px-3 text-primary">
+                    <button class="btn btn-outline-warning">Voir plus</button></a>
                   <div class="icon-group">
-                    <i class="far fa-heart fa-1x mx-2"></i>
-                    {% comment %} <i class="fas fa-share-alt fa-1x mx-2"></i> {% endcomment %}
+                    <i class="{% if product.id in favorite_products %}fas{% else %}far{% endif %} fa-heart fa-1x mx-2 text-danger" onclick="toggleFavorite({{ product.id }}, this)" data-mdb-toggle="popover" data-mdb-content="Ajoutez ce produit à vos favoris" style="cursor: pointer;"></i>
                   </div>
                 </div>
               </div>
@@ -237,6 +239,7 @@
         </div>
       </div>
     </section>
-  
-  
-{% endblock content %}
+    
+    {% endblock %}
+                  
+    

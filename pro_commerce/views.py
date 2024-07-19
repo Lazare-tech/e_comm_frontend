@@ -1,5 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render,get_list_or_404
-from .models import Category, Subcategory,Product,Adresse
+from .models import Category, Subcategory,Product,Adresse, UserFavorite
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homepage(request):
@@ -13,11 +15,11 @@ def homepage(request):
         print(products)
     if ville:
         products=products.filter(ville__icontains=ville)
-        
+   
     context={
         'products':products,
         'search_query':search_query,
-        'ville':ville
+        'ville':ville,
     }
     return render(request,'pro_commerce/home.html',context)
 #
@@ -36,11 +38,12 @@ def products_by_category(request, category_slug):
     products = Product.objects.filter(categorie=category)
     if ville:
         products=products.filter(ville__icontains=ville)
-     
+        
+   
     context={
         # 'category':category,
         'products':products,
-        'category':category
+        'category':category,
     }
     return render(request, 'pro_commerce/product_categorie.html', context)
 
@@ -52,10 +55,10 @@ def products_by_subcategory(request, subcategory_slug):
     if ville:
         products=products.filter(ville__icontains=ville)
   
-
+   
     context = {
         'subcategory': subcategory,
-        'products': products
+        'products': products,
     }
     return render(request, 'pro_commerce/product_sous-categorie.html', context)
 # #
@@ -90,3 +93,19 @@ def about(request):
 
 def custom_404_view(request, exception):
     return render(request, '404.html', {}, status=404)
+#
+@login_required
+def favorite(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    favorite, created = UserFavorite.objects.get_or_create(user=request.user, product=product)
+
+    if not created:
+        favorite.delete()
+        return JsonResponse({'status': 'removed'})
+
+    return JsonResponse({'status': 'added'})
+#
+@login_required
+def favorite_list(request):
+    favorite_products =UserFavorite.objects.filter(user=request.user).select_related('product')
+    return render(request, 'pro_commerce/favorite_liste.html', {'favorites': favorite_products})

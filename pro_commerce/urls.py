@@ -18,6 +18,8 @@ urlpatterns = [
     # path('category/<int:category_id>/', pro_commerce.views.products_by_category, name='products_by_category'),
     # path('subcategory/<int:subcategory_id>/', pro_commerce.views.products_by_subcategory, name='products_by_subcategory'),
     path('sous-categorie/<slug:subcategory_slug>/', pro_commerce.views.products_by_subcategory, name='products_by_subcategory'),
+    path('toggle-favorite/<int:product_id>/', pro_commerce.views.favorite, name='toggle_favorite'),
+    path('favorites/', pro_commerce.views.favorite_list, name='liste_favoris'),
 
 ]
 # if settings.DEBUG:

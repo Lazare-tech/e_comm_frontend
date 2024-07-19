@@ -75,6 +75,9 @@ TEMPLATES_DIR
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'pro_commerce.context_processors.categories_processor',
+                    'pro_commerce.context_processors.favorite_processor',
+
+
 
             ],
         },

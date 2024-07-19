@@ -79,3 +79,27 @@ setInterval(autoSlide, 3000);
         });
     });
     // END CATEGORY SUB CATEGORY
+    // PRODUCT FAVORITE PARTY 
+        function toggleFavorite(productId, element) {
+          fetch(`/toggle-favorite/${productId}/`)
+            .then(response => response.json())
+            .then(data => {
+              let popoverMessage;
+              if (data.status === 'added') {
+                element.classList.remove('far');
+                element.classList.add('fas');
+                popoverMessage = 'Produit ajouté à vos favoris';
+              } else if (data.status === 'removed') {
+                element.classList.remove('fas');
+                element.classList.add('far');
+                popoverMessage = 'Produit retiré de vos favoris';
+              }
+              element.setAttribute('data-mdb-content', popoverMessage);
+              let popoverInstance = new mdb.Popover(element);
+              popoverInstance.show();
+              setTimeout(() => {
+                popoverInstance.hide();
+              }, 2000); // Disparait après 2 secondes
+            })
+            .catch(error => console.error('Error:', error));
+        }

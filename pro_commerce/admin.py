@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Product,Adresse,User,Subcategory
+from .models import Category,Product,Adresse,User,Subcategory,UserFavorite
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
@@ -39,3 +39,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory)  # Si vous souhaitez également une entrée distincte pour les sous-catégories
+#
+class UserFavoriteAdmin(admin.ModelAdmin):
+    list_display=('user','product','added_at')
+admin.site.register(UserFavorite,UserFavoriteAdmin)
