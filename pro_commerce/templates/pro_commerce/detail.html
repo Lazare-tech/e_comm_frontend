@@ -37,8 +37,12 @@
     <p><span class="fw-bold product-property">Repère:</span> <span class="text-muted">{{ adresse.repere }}</span></p>
     <p><span class="fw-bold product-property">Numéro de téléphone:</span> <a href="tel:+{{ adresse.contact }}">{{ adresse.contact }}</a></p>
     <p><a href="https://wa.me/{{ adresse.contact }}" class="bg-success text-white py-1 px-2 fw-bold rounded-2 text-decoration-none"><i class="fab fa-whatsapp"></i> contactez sur WhatsApp</a></p>
-
-    <hr>
+    <div class="col-md-4 order-1 order-md-3 mt-3">
+        <h5 class="mb-3 product-property fw-bold">Localisation</h5>
+        <div id="map">
+            <iframe src="{{ product.vendeur.map_url }}" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
 {% endfor %}
 {% else %}
 <p>Aucune adresse trouvée pour ce produit.</p>
@@ -72,18 +76,20 @@
                             <p class="card-text mb-0 text-muted">Prix</p>
                             <h6 class="mb-0 text-muted">{{ similar_product.prix }} FCFA</h6>
                         </div>
-                      
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <a href="{% url 'pro_commerce:product_detail' similar_product.id %}" class="rounded-pill px-3 text-primary">
+                                <button class="btn btn-outline-warning">Voir plus</button></a>
+                              <div class="icon-group">
+                              <i class="{% if similar_product.id in favorite_products %}fas{% else %}far{% endif %} fa-heart fa-1x mx-2 text-danger" onclick="toggleFavorite({{ product.id }}, this)" data-mdb-toggle="popover" data-mdb-content="Ajoutez ce produit à vos favoris" style="cursor: pointer;"></i>
+                            </div>
+                          </div>
                     </div>
+                    
                 </div>
             </div>
             {% endfor %}
             
-            <div class="col-md-4 order-1 order-md-3 mt-3">
-                <h5 class="mb-3 product-property fw-bold">Localisation</h5>
-                <div id="map">
-                    <iframe src="{{ product.vendeur.map_url }}" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
+           
         </div>
     
         <div class="row similar-product pb-5 pt-5">

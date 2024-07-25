@@ -2,26 +2,32 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render,get_list_or_404
 from .models import Category, Subcategory,Product,Adresse, UserFavorite
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 # Create your views here.
+
 def homepage(request):
-    #
-    products=Product.objects.all()
-    search_query= request.GET.get('search','')
-    ville= request.GET.get('ville','')
-    #filtre
+    products = Product.objects.all()
+    search_query = request.GET.get('search', '')
+    ville = request.GET.get('ville', '')
+
+    # Filtre
     if search_query:
-        products= products.filter(nom__icontains=search_query)
-        print(products)
+        products = products.filter(nom__icontains=search_query)
     if ville:
-        products=products.filter(ville__icontains=ville)
-   
-    context={
-        'products':products,
-        'search_query':search_query,
-        'ville':ville,
+        products = products.filter(ville__icontains=ville)
+
+    # Pagination
+    paginator = Paginator(products, 2)  # 10 produits par page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj,
+        'search_query': search_query,
+        'ville': ville,
     }
-    return render(request,'pro_commerce/home.html',context)
+    return render(request, 'pro_commerce/home.html', context)
 #
 def all_products(request):
     products=Product.objects.all()

@@ -33,7 +33,7 @@ class SubcategoryInline(admin.TabularInline):  # Vous pouvez utiliser StackedInl
     extra = 1
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('nom','slug')
+    list_display = ('nom','slug','photo')
     search_fields = ('nom',)
     inlines = [SubcategoryInline]
 

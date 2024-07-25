@@ -9,7 +9,7 @@ from e_comm import settings
 class Category(models.Model):
     nom = models.CharField(max_length=40, verbose_name='Nom de la catégorie')
     slug = models.SlugField(unique=True, max_length=255,blank=True)
-
+    photo = models.ImageField(upload_to='category_images/', verbose_name='Photo du categorie',blank=True,null=True)
 
     class Meta:
         verbose_name = 'Nom de la catégorie'
@@ -31,6 +31,7 @@ class Subcategory(models.Model):
     nom = models.CharField(max_length=40, verbose_name='Nom de la sous-catégorie')
     categorie = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='souscategories')
     slug = models.SlugField(unique=True, max_length=255,blank=True)
+    photo = models.ImageField(upload_to='sub_category_images/', verbose_name='Photo du sous categorie',blank=True,null=True)
 
     class Meta:
         verbose_name = 'Sous-catégorie'

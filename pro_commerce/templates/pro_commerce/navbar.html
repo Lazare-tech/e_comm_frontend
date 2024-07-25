@@ -79,11 +79,12 @@
           </ul>
           
           <div class="d-flex align-items-center ms-auto">
-              <button class="btn btn-outline-info text-lowercase" type="button">Parcourez</button>
+              <button class="btn btn-outline-info text-lowercase" type="button">Publiez un produit</button>
 
               <a href="#" class="icon-search"><i class="fas fa-search fa-2x mx-2"></i></a>
+              {% if user.is_authenticated %}
+
               <div class="dropdown d-inline-block">
-                {% if user.is_authenticated %}
                     <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ user.username }}
                     </button>
@@ -93,12 +94,13 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url 'compte:logout' %}">Déconnexion</a></li>
                     </ul>
-                {% else %}
-                    <a href="{% url 'compte:login' %}" class="d-inline-block dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user fa-2x mx-2"></i>
-                    </a>
-                {% endif %}
+              
             </div>
+            {% else %}
+            <a href="{% url 'compte:login' %}" class="d-inline-block" aria-expanded="false">
+                <i class="fas fa-user fa-2x mx-2"></i>
+            </a>
+        {% endif %}
             
                   
       </div>
