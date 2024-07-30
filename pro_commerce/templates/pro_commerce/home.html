@@ -18,7 +18,7 @@
     <button
       type="button"
       data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="0"
+      data-mdb-slide-to="0" 
       class="active"
       aria-current="true"
       aria-label="Slide 1"
@@ -78,68 +78,65 @@
 <h5 class="border-bottom container pt-5 text-muted">Explorez les categories</h5>
 
 <!--CARROSEL CATEGORY-->
-<div class="container">
-  <button class="carousel-button left" id="carousel-button-left">&lt;</button>
-  <button class="carousel-button right" id="carousel-button-right">&gt;</button>
-</div>
-<section class="carousel-category pt-5">
-  <div class="carousel-categorie">
-    <div class="carousel-track-container">
-      <ul class="carousel-track">
-        {% for category in categories %}
-        <div class="col-lg-3 ms-2">
-          <div class="card">
-            <a href="{% url 'pro_commerce:products_by_category' category.slug %}" class="text-decoration-none text-muted text-dark">
-              <img
-                src="{{ category.photo.url }}"
-                class="card-img-top"
-                alt="{{ category.nom }}"
-              />
-              <div class="card-body">
-                <h6 class="card-title fw-bold">{{ category.nom }}</h6>
-              </div>
-            </a>
-          </div>
+
+<section class="container mt-5">
+
+  <button class="carousel-button prev" onclick="scrollCarousel(-1)">&#10094;</button>
+  <button class="carousel-button next" onclick="scrollCarousel(1)">&#10095;</button>
+
+      <div class="position-relative">
+    <div class="carousel-container d-flex carou">
+      {% for category in categories %}
+      <div class="carousel-item">
+        <div class="card">
+          <a href="{% url 'pro_commerce:products_by_category' category.slug %}" class="text-decoration-none text-muted text-dark">
+            <img src="{{ category.photo.url }}" class="card-img-top" alt="{{ category.nom }}" />
+            <div class="card-body">
+              <h6 class="card-title fw-bold">{{ category.nom }}</h6>
+            </div>
+          </a>
         </div>
-        {% endfor %}
-      </ul>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
-
-
-
 
   <!-- Main Content -->
   
     <!-- Other Content Here -->
   
-    <section class='container'>
-      <div class="row mb-5 justify-content-between">
-        <h4 class="mt-4 mb-5 text-center"><strong>Bestsellers</strong></h4>
-  
-        <div class="col-4">
-          <form method="GET" action="{% url 'pro_commerce:homepage' %}#products-section" class="input-group search-bar">
+    <section class='container mt-4 mb-5'>
+      <div class="row align-items-center mb-4">
+        <div class="col-12 col-md-6 col-lg-8 text-center text-md-start">
+          <h4><strong>Bestsellers</strong></h4>
+        </div>
+    
+        <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
+          <form method="GET" action="{% url 'pro_commerce:homepage' %}#products-section" class="input-group search-bar w-100">
             <input type="text" name="search" class="form-control py-4" placeholder="Rechercher un produit" value="{{ search_query }}" aria-label="Rechercher">
             <button class="btn btn-primary" type="submit">
               <i class="fas fa-search text-white"></i>
             </button>
+          </form>
         </div>
-        <div class="col-3">
-          <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-            <label for="ville">Ville:</label>
-              <select id="ville" name="ville" class="border-0 form-select-sm bg-light me-3" onchange="this.form.submit()">
-                <option value="">Choisir une ville</option>
-                <option value="Bobo-Dioulasso" {% if city == "Bobo-Dioulasso" %}selected{% endif %}>Bobo-Dioulasso</option>
-                <option value="Ouagadougou" {% if city == "Ouagadougou" %}selected{% endif %}>Ouagadougou</option>
-                <option value="Banfora" {% if city == "Banfora" %}selected{% endif %}>Banfora</option>
-                <option value="Kaya" {% if city == "Kaya" %}selected{% endif %}>Kaya</option>
-              </select>
-                 </form>
+    
+        <div class="col-12 mt-3 mt-md-0 col-md-6 col-lg-6 d-flex justify-content-center justify-content-md-end">
+          <div class="bg-light p-3 rounded d-flex align-items-center w-100">
+            <label for="ville" class="me-2 mb-0 d-none d-md-inline">Ville:</label>
+            <select id="ville" name="ville" class="border-0 form-select-sm bg-light" onchange="this.form.submit()">
+              <option value="">Choisir une ville</option>
+              <option value="Bobo-Dioulasso" {% if city == "Bobo-Dioulasso" %}selected{% endif %}>Bobo-Dioulasso</option>
+              <option value="Ouagadougou" {% if city == "Ouagadougou" %}selected{% endif %}>Ouagadougou</option>
+              <option value="Banfora" {% if city == "Banfora" %}selected{% endif %}>Banfora</option>
+              <option value="Kaya" {% if city == "Kaya" %}selected{% endif %}>Kaya</option>
+            </select>
           </div>
         </div>
+      
       </div>
     </section>
+    
   
  
     
@@ -147,34 +144,35 @@
       <div class="container-fluid py-1 px-5">
         <div class="row" id="products-list">
           {% for product in page_obj %}
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100 product-card">
-              <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                <img src="{{ product.photo.url }}" class="w-100" alt="{{ product.nom }}" />
-                <a href="{% url 'pro_commerce:product_detail' product.id %}">
-                  <div class="hover-overlay">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                  </div>
-                </a>
-              </div>
-              <div class="card-body d-flex flex-column">
-                <a href="{% url 'pro_commerce:product_detail' product.id %}" class="text-reset text-decoration-none">
-                  <h6 class="card-title mb-3 text-muted">{{ product.nom }}</h6>
-                </a>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="card-text mb-0 text-muted">Prix</p>
-                  <h6 class="mb-0 text-muted">{{ product.prix }} FCFA</h6>
+          <div class="col-lg-3 col-md-4 order-{{ forloop.counter }} mt-3">
+            <div class="card h-100 product-card"> <!-- Ajoutez la classe product-card ici -->
+                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                    <img src="{{ product.photo.url }}" class="w-100" alt="{{ similar_product.nom }}" />
+                    <a href="{% url 'pro_commerce:product_detail' product.id %}">
+                        <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                        </div>
+                    </a>
                 </div>
-                <div class="d-flex justify-content-between align-items-center mt-auto">
-                  <a href="{% url 'pro_commerce:product_detail' product.id %}" class="rounded-pill px-3 text-primary">
-                    <button class="btn btn-outline-warning">Voir plus</button></a>
-                  <div class="icon-group">
-                    <i class="{% if product.id in favorite_products %}fas{% else %}far{% endif %} fa-heart fa-1x mx-2 text-danger" onclick="toggleFavorite({{ product.id }}, this)" data-mdb-toggle="popover" data-mdb-content="Ajoutez ce produit à vos favoris" style="cursor: pointer;"></i>
-                  </div>
+                <div class="card-body d-flex flex-column">
+                    <a href="{% url 'pro_commerce:product_detail' product.id %}" class="text-reset text-decoration-none">
+                        <h6 class="card-title mb-3 text-muted">{{ product.nom }}</h5>
+                    </a>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="card-text mb-0 text-muted">Prix</p>
+                        <h6 class="mb-0 text-muted">{{ product.prix }} FCFA</h6>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                        <a href="{% url 'pro_commerce:product_detail' product.id %}" class="rounded-pill px-3 text-primary">
+                            <button class="btn btn-outline-warning">Voir plus</button></a>
+                          <div class="icon-group">
+                          <i class="{% if product.id in favorite_products %}fas{% else %}far{% endif %} fa-heart fa-1x mx-2 text-danger" onclick="toggleFavorite({{ product.id }}, this)" data-mdb-toggle="popover" data-mdb-content="Ajoutez ce produit à vos favoris" style="cursor: pointer;"></i>
+                        </div>
+                      </div>
                 </div>
-              </div>
+                
             </div>
-          </div>
+        </div>
           
           {% endfor %}
           

@@ -103,3 +103,14 @@ setInterval(autoSlide, 3000);
             })
             .catch(error => console.error('Error:', error));
         }
+
+// CAROUSEL IMAGE CATEGORIE DEFILEMENT HORIZONTAL
+
+function scrollCarousel(direction) {
+  const container = document.querySelector('.carousel-container');
+  const scrollAmount = 200; // Ajustez la quantité de défilement si nécessaire
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
