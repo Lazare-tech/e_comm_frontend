@@ -1,9 +1,10 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render,get_list_or_404
+from django.shortcuts import get_object_or_404, redirect, render,get_list_or_404
 from .models import Category, Subcategory,Product,Adresse, UserFavorite
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-
+from django.contrib import messages
+from .forms import ProductForm,AdresseForm
 # Create your views here.
 
 def homepage(request):
@@ -115,3 +116,120 @@ def favorite(request, product_id):
 def favorite_list(request):
     favorite_products =UserFavorite.objects.filter(user=request.user).select_related('product')
     return render(request, 'pro_commerce/favorite_liste.html', {'favorites': favorite_products})
+#
+def dashboard_user(request):
+    return render(request,'Admin/admin.html')
+#DASHBOARD PARTY...................................................................................
+def annonce(request):
+    return render(request,'Admin/pro_admin/annonce.html')
+#--------------------------ADMIN PARTY---------------------------------
+#----------------------------------------------------------------------
+#PRODUCT
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.utilisateur = request.user
+            product.save()
+            messages.success(request, 'Le produit a été enregistré avec succès.')
+            return redirect('dashboard')  # Redirigez vers une vue liste de produits ou autre
+        else:
+            messages.error(request, 'Erreur lors de l\'enregistrement du produit. Veuillez vérifier les informations.')
+    else:
+        form = ProductForm()
+    
+    return render(request, 'Admin/pro_admin/add_product.html', {'form': form})
+#
+
+ # Fetch products for the logged-in user
+def product_admin(request):
+
+    products = Product.objects.filter(utilisateur=request.user)
+    # Fetch addresses for the logged-in user
+    addresses = Adresse.objects.filter(utilisateur=request.user)
+    
+    # Pass both products and addresses to the template
+    context = {
+        'products': products,
+        'addresses': addresses,
+    }
+    
+    return render(request, 'Admin/admin.html', context)
+# def product_create(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('product:list')
+#     else:
+#         form = ProductForm()
+#     return render(request, 'product_form.html', {'form': form})
+
+def product_update(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('pro_commerce:dashboard')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'Admin/pro_admin/product_update.html', {'form': form})
+
+def product_delete(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('pro_commerce:dashboard')
+    return render(request, 'Admin/admin.html', {'product': product})
+#-----------------------------------------------------------
+#ADRESSE
+#----------------------------------------------------------
+
+@login_required
+def adresse_create(request):
+    if request.method == 'POST':
+        form = AdresseForm(request.POST)
+        if form.is_valid():
+            adresse = form.save(commit=False)
+            adresse.utilisateur = request.user
+            adresse.save()
+            return redirect('some_success_url')  # Redirect to a success page or list of addresses
+    else:
+        form = AdresseForm()
+    
+    context = {
+        'form': form,
+        'products': Product.objects.all(),  # Make sure to pass the products for the dropdown
+    }
+    return render(request, 'Admin/pro_admin/adresse_form.html', context)
+#
+
+@login_required
+def user_addresses(request):
+    # Fetch the addresses for the logged-in user
+    addresses = Adresse.objects.filter(utilisateur=request.user)
+    return render(request, 'user_addresses.html', {'addresses': addresses})
+#
+@login_required
+def update_address(request, pk):
+    address = get_object_or_404(Adresse, pk=pk, utilisateur=request.user)
+    if request.method == 'POST':
+        form = AdresseForm(request.POST, instance=address)
+        if form.is_valid():
+            form.save()
+            return redirect('pro_commerce:dashboard')
+    else:
+        form = AdresseForm(instance=address)
+    return render(request, 'Admin/pro_admin/adresse_update.html', {'form': form})
+
+@login_required
+def delete_address(request, pk):
+    address = get_object_or_404(Adresse, pk=pk, utilisateur=request.user)
+    if request.method == 'POST':
+        address.delete()
+        return redirect('pro_commerce:dashboard')
+    return render(request, 'confirm_delete.html', {'address': address})

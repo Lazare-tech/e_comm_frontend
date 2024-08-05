@@ -1,0 +1,53 @@
+{% extends "Admin/base.html" %}
+
+{% block main %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5>Nouvelle Article</h5>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.photo.label_tag }}
+              {{ form.photo }}
+            </div>
+            <div class="mb-3">
+              {{ form.nom.label_tag }}
+              {{ form.nom }}
+            </div>
+            <div class="mb-3">
+              {{ form.ville.label_tag }}
+              {{ form.ville }}
+            </div>
+            <div class="mb-3">
+              {{ form.description.label_tag }}
+              {{ form.description }}
+            </div>
+            <div class="mb-3">
+              {{ form.prix.label_tag }}
+              {{ form.prix }}
+            </div>
+            <div class="mb-3">
+              {{ form.stock.label_tag }}
+              {{ form.stock }}
+            </div>
+            <div class="mb-3">
+              {{ form.categorie.label_tag }}
+              {{ form.categorie }}
+            </div>
+            <div class="mb-3">
+              {{ form.sous_categorie.label_tag }}
+              {{ form.sous_categorie }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

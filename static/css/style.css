@@ -34,11 +34,15 @@
   font-size: 24px; /* Taille de la flèche */
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre pour effet 3D */
-  z-index: 10;
+  /* z-index: 10; */
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 /* Positionnement du bouton précédent */
+.carousel-button.next{
+  position: relative;
+  left:50px;
+}
 .carousel-button.prev {
   left: 10px;
 }
@@ -68,7 +72,7 @@
 @media (max-width:360px){
   .carousel-item img {
     width: 100% !important;
-    height: 100px !important;
+    height: 55vh;
 
     object-fit: cover;
 
@@ -80,6 +84,14 @@
 
   object-fit: cover;
 
+}
+@media (max-width:359px){
+  .carou .carousel-item img {
+    width: 127px !important;
+    height: 90px !important;
+    object-fit: cover;
+    background-color: red;
+}
 }
   /* Style pour les boutons du carrousel */
 
@@ -162,6 +174,17 @@
   top: 0;
    right: 25%;
  background-color:#3f3f69;
+}
+@media (max-width:359px){
+  .filter{
+  position: relative;
+  bottom: 109px !important;
+ 
+}
+  #products-section{
+    position: relative;
+    bottom: 103px !important;
+  }
 }
 .l{
   padding: 30px;
@@ -380,8 +403,16 @@ background-image: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 
     padding: 20px;
     text-align: center; */
 }
+.custom-outline-button {
+  /* border-color: #3f3f69; */
+  color: #3f3f69;
+}
 
-
+.custom-outline-button:hover {
+  background-color: #3f3f69;
+  color: white;
+  transition: 1s;
+}
 
 /* END NAVBAR PARTY */
 

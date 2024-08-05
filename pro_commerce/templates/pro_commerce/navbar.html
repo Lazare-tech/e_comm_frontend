@@ -79,8 +79,13 @@
           </ul>
           
           <div class="d-flex align-items-center ms-auto">
-              <button class="btn btn-outline-info text-lowercase" type="button">Publiez un produit</button>
-
+          {% if not user.is_authenticated %}
+              <a href="{% url 'compte:login' %}"><button class="btn btn-outline-dark custom-outline-button text-lowercase" type="button">Publiez un produit</button>
+              </a>
+              {% else %}
+              <a href="{% url 'pro_commerce:dashboard' %}"><button class="btn btn-outline-dark custom-outline-button text-lowercase" type="button">Publiez un produit</button>
+              </a>
+              {% endif %}
               <a href="#" class="icon-search"><i class="fas fa-search fa-2x mx-2"></i></a>
               {% if user.is_authenticated %}
 
