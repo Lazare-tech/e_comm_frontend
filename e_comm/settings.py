@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_seed',
     'widget_tweaks',
-    'django_social_share'
+    # 'django_social_share'
+    'star_ratings'
 
 
 
@@ -75,13 +76,16 @@ TEMPLATES_DIR
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'pro_commerce.context_processors.categories_processor',
-                    'pro_commerce.context_processors.favorite_processor',
-                                        'pro_commerce.context_processors.paginator_processor',
+                'pro_commerce.context_processors.favorite_processor',
+                'pro_commerce.context_processors.paginator_processor',
+                                'pro_commerce.context_processors.admin_processor',
+
 
 
 
 
             ],
+            
         },
     },
 ]

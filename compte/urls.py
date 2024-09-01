@@ -11,5 +11,7 @@ app_name= "compte"
 urlpatterns = [
     path('login/',compte.views.login_page,name='login'),
     path('signup/',compte.views.signup_page,name='signup'),
-    path('logout/',compte.views.logout_user,name='logout')
+    path('logout/',compte.views.logout_user,name='logout'),
+        path('profile_utilisateur/',compte.views.profile,name='profile'),
+
 ]

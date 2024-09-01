@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Product,Adresse,User,Subcategory,UserFavorite
+from .models import Category,Product,Adresse, ReviewRating,User,Subcategory,UserFavorite
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
@@ -7,7 +7,7 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User,UserAdmin)
 #
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'prix', 'stock', 'ville','categorie', 'sous_categorie', 'utilisateur')
+    list_display = ('nom', 'prix', 'stock', 'ville','categorie', 'sous_categorie', 'utilisateur','adresse')
     list_filter = ('categorie', 'utilisateur')
     search_fields = ('nom', 'description')
 
@@ -16,7 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
             'fields': ('nom', 'description', 'photo','ville')
         }),
         ('Détails du produit', {
-            'fields': ('prix', 'stock', 'categorie', 'sous_categorie', 'utilisateur')
+            'fields': ('prix', 'stock', 'categorie', 'sous_categorie', 'utilisateur','adresse')
         }),
     )
 admin.site.register(Product, ProductAdmin)
@@ -24,7 +24,7 @@ admin.site.register(Product, ProductAdmin)
 
 #
 class AdresseAdmin(admin.ModelAdmin):
-    list_display=('ville','quartier','repere','contact','utilisateur','produit')
+    list_display=('ville','quartier','repere','contact','utilisateur')
 admin.site.register(Adresse,AdresseAdmin)
 #
 
@@ -43,3 +43,8 @@ admin.site.register(Subcategory)  # Si vous souhaitez également une entrée dis
 class UserFavoriteAdmin(admin.ModelAdmin):
     list_display=('user','product','added_at')
 admin.site.register(UserFavorite,UserFavoriteAdmin)
+#
+
+class ReviewRatingAdmin(admin.ModelAdmin):
+    list_display=['produit','user','subject','review','rating','ip','status','created_at','updated_at']
+admin.site.register(ReviewRating,ReviewRatingAdmin)

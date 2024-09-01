@@ -8,7 +8,6 @@ handler404 = custom_404_view
 app_name="pro_commerce"
 urlpatterns = [
     path('',pro_commerce.views.homepage,name='homepage'),
-
     path('details/product/<int:product_id>/',pro_commerce.views.detail,name='product_detail'),
 
     path('contact',pro_commerce.views.contacts,name='contact'),
@@ -22,20 +21,23 @@ urlpatterns = [
     path('favorites/', pro_commerce.views.favorite_list, name='liste_favoris'),
     path('annonce',pro_commerce.views.annonce,name='annonce'),
     #------------------------------------------------------------------------------
+    #PRODUCT
     #-----------------------------------------------------------------------------
-        path('add-product/', pro_commerce.views.add_product, name='add_product'),
-  path('<int:pk>/update/', pro_commerce.views.product_update, name='update_product'),
+    path('add-product/', pro_commerce.views.add_product, name='add_product'),
+    path('<int:pk>/update/', pro_commerce.views.product_update, name='update_product'),
     path('<int:pk>/delete/', pro_commerce.views.product_delete, name='delete_product'),
-    #--------------------------------------------------------------------------------
-    #-----------------------------------------------------------------------------------
-        path('dashboard_seller/', pro_commerce.views.product_admin, name='dashboard'),
-
+    path('dashboard_seller/', pro_commerce.views.product_admin, name='dashboard'),
+    #------------------------------------------------------------------------------
+    #ADRESSE
+    #-----------------------------------------------------------------------------
     path('create/', pro_commerce.views.adresse_create, name='create_adresse'),
-        path('addresses/', pro_commerce.views.user_addresses, name='user_addresses'),
+    path('addresses/', pro_commerce.views.user_addresses, name='user_addresses'),
     path('addresses/create/', pro_commerce.views.adresse_create, name='create_adresse'),
     path('addresses/update/<int:pk>/', pro_commerce.views.update_address, name='update_adresse'),
     path('addresses/delete/<int:pk>/', pro_commerce.views.delete_address, name='delete_adresse'),
 
+    #
+        path('submit_review/<int:product_id>/', pro_commerce.views.submit_review, name='submit_review'),
 
 
 

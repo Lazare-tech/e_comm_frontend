@@ -1,11 +1,11 @@
 from django import forms
-from .models import Product, Category, Subcategory,Adresse
+from .models import Product, Category, ReviewRating, Subcategory,Adresse
 from phonenumber_field.formfields import PhoneNumberField
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['photo', 'nom', 'ville', 'description', 'prix', 'stock', 'categorie', 'sous_categorie']
+        fields = ['photo', 'nom', 'ville', 'description', 'prix', 'stock', 'categorie', 'sous_categorie','adresse']
         widgets = {
             'photo': forms.FileInput(attrs={'class': 'form-control'}),
             'nom': forms.TextInput(attrs={'class': 'form-control'}),
@@ -15,6 +15,9 @@ class ProductForm(forms.ModelForm):
             'stock': forms.NumberInput(attrs={'class': 'form-control'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),
             'sous_categorie': forms.Select(attrs={'class': 'form-control'}),
+                        'adresse': forms.Select(attrs={'class': 'form-control'}),
+
+
         }
 
     def clean_nom(self):
@@ -34,28 +37,28 @@ class ProductForm(forms.ModelForm):
         if stock < 0:
             raise forms.ValidationError("Le stock ne peut pas être négatif.")
         return stock
+    #
     
-#ADRESSE FORM
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user is not None:
+            self.fields['adresse'].queryset = Adresse.objects.filter(utilisateur=user)
+    #ADRESSE FORM
 
 class AdresseForm(forms.ModelForm):
     contact = PhoneNumberField()
 
     class Meta:
         model = Adresse
-        fields = ['ville', 'quartier', 'repere', 'contact', 'produit']
+        fields = ['ville', 'quartier', 'repere', 'contact']
         
         widgets = {
             'ville': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrez la ville'}),
             'quartier': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrez le quartier'}),
             'repere': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrez le point de référence'}),
             'contact': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrez le numéro de téléphone'}),
-            'produit': forms.Select(attrs={'class': 'form-control'}),
         }
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Populate the 'produit' field with the queryset of products
-        self.fields['produit'].queryset = Product.objects.all()
     
     def clean_contact(self):
         contact = self.cleaned_data.get('contact')
@@ -91,3 +94,9 @@ class AdresseForm(forms.ModelForm):
         if not produit:
             raise forms.ValidationError("Le produit est requis.")
         return produit
+#
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ReviewRating
+        fields = ['subject', 'review', 'rating']
