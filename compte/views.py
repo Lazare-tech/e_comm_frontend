@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate,logout
 from django.conf import settings
@@ -5,6 +6,8 @@ from django.conf import settings
 from compte.models import User
 from . import forms
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+
 
 # Create your views here.
 def login_page(request):
@@ -54,17 +57,27 @@ def logout_user(request):
 def profile(request):
     return render(request,'compte/profile_user.html')
 
-def profile(request):
-    profile = User.objects.get(username=request.user)
-    form = forms.UserProfileForm(instance=profile)
-
+@login_required
+def profile_view(request):
+    user = request.user
     if request.method == 'POST':
-        form = forms.UserProfileForm(request.POST, instance=profile)
-
+        form = forms.UserProfileForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            form.save()
-            # Rediriger
-            return redirect('pro_commerce:homepage') 
-#  vers la page de profil avec un message de succès
+            user = form.save()
+            if form.cleaned_data.get('nouveau_mot_de_passe'):
+                update_session_auth_hash(request, user)  # Met à jour la session pour éviter la déconnexion
+            # messages.success(request, 'Profil mis à jour avec succès.')
+            return redirect('pro_commerce:homepage')
+    else:
+        form = forms.UserProfileForm(instance=user)
+    
+    return render(request, 'compte/profile_user.html', {'form': form})
 
-    return render(request, 'compte/profile_user.html', {'form': form, 'profile': profile})
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Votre compte a été supprimé avec succès.')
+        return redirect('pro_commerce:homepage')  # Redirigez vers une page d'accueil ou de connexion après suppression
+    return redirect('compte:profile')

@@ -102,6 +102,9 @@
     .navbar .nav-link:hover {
       color: #2e59d9;
     }
+    .bg-admin{
+      background-color: #00353F;
+    }
     /* ADMIN stat  */
  /* @media (max-width:945px){
   .adm{
@@ -156,38 +159,42 @@
     <!-- Sidebar -->
 
     <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav id="admin-navbar" class="navbar navbar-expand-lg navbar-dark bg-admin fixed-top">
       <!-- Container wrapper -->
       <div class="container-fluid">
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
-
-        <!-- Brand -->
-        <a class="navbar-brand text-muted me-auto px-5" href="{% url 'pro_commerce:homepage' %}">
+    
+        <!-- Brand - Accueil -->
+        <a class="navbar-brand text-light me-auto px-5" href="{% url 'pro_commerce:homepage' %}">
           Accueil
         </a>
-
+    
         <!-- Right links -->
         <div class="d-flex align-items-center">
           {% if user.is_authenticated %}
           <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+            <!-- Admin Home Link -->
+            <li class="nav-item">
+              <a class="nav-link text-light" href="{% url 'pro_commerce:homepage' %}">Dashboard Admin</a>
+            </li>
             <!-- Avatar with user initial -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <div class="user-circle me-2">
+                <div class="user-circle me-2 bg-light text-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;">
                   {{ user.username|slice:":2" }}
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'compte:profile' %}">My Profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'compte:logout' %}">Logout</a></li>
+                <li><a class="dropdown-item" href="{% url 'compte:profile' %}">Mon Profil</a></li>
+                <li><a class="dropdown-item" href="{% url 'compte:logout' %}">Déconnexion</a></li>
               </ul>
             </li>
           </ul>
           {% else %}
-          <a href="{% url 'compte:login' %}" class="d-inline-block" aria-expanded="false">
+          <a href="{% url 'compte:login' %}" class="d-inline-block text-light" aria-expanded="false">
             <i class="fas fa-user fa-2x mx-2"></i>
           </a>
           {% endif %}
@@ -195,6 +202,7 @@
       </div>
       <!-- Container wrapper -->
     </nav>
+    
     <!-- Navbar -->
   </header>
   <!--Main Navigation-->

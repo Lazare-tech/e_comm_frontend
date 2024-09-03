@@ -10,3 +10,4 @@ def add_class(value, arg):
     if isinstance(value, template.Variable):
         value = value.resolve(None)
     return value.as_widget(attrs={'class': arg})
+#

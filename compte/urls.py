@@ -12,6 +12,8 @@ urlpatterns = [
     path('login/',compte.views.login_page,name='login'),
     path('signup/',compte.views.signup_page,name='signup'),
     path('logout/',compte.views.logout_user,name='logout'),
-        path('profile_utilisateur/',compte.views.profile,name='profile'),
+    path('delete_account',compte.views.delete_account,name='delete_account'),
+    path('profile',compte.views. profile_view,name='profile'),
+        # path('profile_utilisateur/',compte.views.profile,name='profile'),
 
 ]

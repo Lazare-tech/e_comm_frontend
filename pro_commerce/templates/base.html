@@ -88,12 +88,19 @@
 
 <script>
   function toggleFavorite(productId, iconElement) {
-    const url = `/toggle_favorite/${productId}/`;  // Assurez-vous que cette URL est correcte pour votre configuration
+    const csrfTokenElement = document.querySelector('input[name="csrfmiddlewaretoken"]');
+    if (!csrfTokenElement) {
+        alert('CSRF token not found.');
+        return;
+    }
+    const csrfToken = csrfTokenElement.value;
+    const url = /toggle_favorite/${productId}/;
+    
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            'X-CSRFToken': csrfToken
         },
     }).then(response => response.json())
       .then(data => {
@@ -103,11 +110,38 @@
           } else {
               alert('Error toggling favorite');
           }
+      }).catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while toggling favorite.');
       });
 }
     
+    
   </script>
-
+ 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sélectionner le champ de fichier et l'image
+      const photoInput = document.querySelector('input[type="file"]');
+      const profileImage = document.getElementById('profile-image');
+      
+      // Événement lorsque l'utilisateur sélectionne un fichier
+      photoInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          // Créer un objet URL pour le fichier sélectionné
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            // Mettre à jour la source de l'image avec l'URL du fichier
+            profileImage.src = e.target.result;
+          };
+          // Lire le fichier en tant qu'URL de données
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+    </script>
+    
 </body>
 
 </html>

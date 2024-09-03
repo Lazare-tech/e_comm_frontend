@@ -15,17 +15,38 @@ class SignupForm(UserCreationForm):
         fields=('username','telephone')
 #
 class UserProfileForm(forms.ModelForm):
+    nouveau_mot_de_passe = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'autocomplete': 'new-password'}),
+        label="Nouveau mot de passe",
+        required=False
+    )
+    confirmer_mot_de_passe = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        label="Confirmer le mot de passe",
+        required=False
+    )
+    
+    
     class Meta:
         model = User
-        fields = ['username', 'last_name', 'email','photo','password','telephone']
+        fields = ['username', 'photo','telephone']
         widgets= {
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'telephone':forms.TextInput(attrs={'class': 'form-control'}),
             'photo': forms.FileInput(attrs={'class': 'form-control'}),
-            'mot_de_passe': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'confirmer_mot_de_passe': forms.PasswordInput(attrs={'class': 'form-control'}),
+            # 'mot_de_passe': forms.PasswordInput(attrs={'class': 'form-control'}),
+            # 'confirmer_mot_de_passe': forms.PasswordInput(attrs={'class': 'form-control'}),
 
 
 
             
         }
+    def clean(self):
+            cleaned_data = super().clean()
+            new_password = cleaned_data.get('nouveau_mot_de_passe')
+            confirm_password = cleaned_data.get('confirmer_mot_de_passe')
+
+            if new_password and new_password != confirm_password:
+                self.add_error('confirmer_mot_de_passe', "Les mots de passe ne correspondent pas.")
+
+            return cleaned_data
